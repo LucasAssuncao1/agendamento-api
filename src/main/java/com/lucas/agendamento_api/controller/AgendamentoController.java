@@ -2,6 +2,8 @@ package com.lucas.agendamento_api.controller;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,6 +26,11 @@ public class AgendamentoController {
     public ResponseEntity<AgendamentoResponse> gravarAgendamento (@RequestBody AgendamentoRequest request){
 
         return ResponseEntity.ok(service.gravarAgendamento(request));
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<AgendamentoResponse> buscarAgendamento (@PathVariable Long id){
+        return ResponseEntity.ok(service.buscarAgendamento(id));
     }
 
 }
