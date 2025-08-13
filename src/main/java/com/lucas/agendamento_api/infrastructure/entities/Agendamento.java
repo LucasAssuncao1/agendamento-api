@@ -10,6 +10,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.PrePersist;
+import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -25,7 +26,9 @@ import lombok.NoArgsConstructor;
 public class Agendamento {
 
     @Id
+    
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @SequenceGenerator(name = "agendamento_seq", sequenceName = "agendamento_seq", allocationSize = 1)
     private Long id;
     private String emailDestinatario;
     private String telefoneDestinatario;
@@ -39,8 +42,8 @@ public class Agendamento {
     @PrePersist
     private void prePersist (){
 
-         this.dataHoraAgendamento = LocalDateTime.now();
-        this.statusNotificacao = StatusAgendamentoEnum.ENVIADO;
+         this.dataHoraEnvio = LocalDateTime.now();
+        this.statusNotificacao = StatusAgendamentoEnum.AGENDADO;
 
     }
 

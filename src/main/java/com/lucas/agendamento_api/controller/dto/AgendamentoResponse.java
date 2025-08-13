@@ -11,7 +11,7 @@ public record AgendamentoResponse(
                                 String telefoneDestinatario,
                                 String mensagem,
                                 @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy HH:mm:ss")
-                                LocalDateTime dataHoraEnvio,
+                                LocalDateTime dataHoraAgendamento,
                                 StatusAgendamentoEnum statusNotificacao
 ) {
 
