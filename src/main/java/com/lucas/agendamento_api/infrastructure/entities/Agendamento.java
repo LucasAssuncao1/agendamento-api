@@ -1,7 +1,6 @@
 package com.lucas.agendamento_api.infrastructure.entities;
 
 import java.time.LocalDateTime;
-import java.time.OffsetDateTime;
 
 import com.lucas.agendamento_api.infrastructure.enums.StatusAgendamentoEnum;
 
@@ -26,8 +25,7 @@ import lombok.NoArgsConstructor;
 public class Agendamento {
 
     @Id
-    
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "agendamento_seq")
     @SequenceGenerator(name = "agendamento_seq", sequenceName = "agendamento_seq", allocationSize = 1)
     private Long id;
     private String emailDestinatario;
@@ -38,14 +36,12 @@ public class Agendamento {
     private String mensagem;
     private StatusAgendamentoEnum statusNotificacao;
 
-
     @PrePersist
-    private void prePersist (){
+    private void prePersist() {
 
-         this.dataHoraEnvio = LocalDateTime.now();
+        this.dataHoraEnvio = LocalDateTime.now();
         this.statusNotificacao = StatusAgendamentoEnum.AGENDADO;
 
     }
-
 
 }
