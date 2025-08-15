@@ -6,6 +6,5 @@ import com.lucas.agendamento_api.infrastructure.entities.Agendamento;
 
 public interface AgendamentoRepository extends JpaRepository<Agendamento, Long>{
 
-    
 
 }
